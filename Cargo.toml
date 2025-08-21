@@ -11,7 +11,7 @@ license = "MPL-2.0"
 
 [features]
 util = ["toml", "structopt", "strum", "serde", "dep:simplelog"]
-preview = ["embedded-graphics-simulator"]
+preview = ["dep:embedded-graphics-simulator"]
 default = ["util", "preview", "anyhow"]
 render = [
     "dep:qrcode",

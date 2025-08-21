@@ -7,6 +7,7 @@ use std::time::Duration;
 
 use commands::Commands;
 use device::Status;
+#[cfg(feature = "render")]
 use image::ImageError;
 use log::{debug, error, trace};
 
@@ -94,6 +95,7 @@ pub enum Error {
     #[error("IO error: {:?}", 0)]
     Io(std::io::Error),
 
+    #[cfg(feature = "render")]
     #[error("Image error: {:?}", 0)]
     Image(ImageError),
 
@@ -128,6 +130,7 @@ impl From<rusb::Error> for Error {
     }
 }
 
+#[cfg(feature = "render")]
 impl From<ImageError> for Error {
     fn from(e: ImageError) -> Self {
         Error::Image(e)
